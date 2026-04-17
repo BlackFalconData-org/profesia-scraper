@@ -2,11 +2,12 @@
 
 Extract structured data from [profesia.sk](https://profesia.sk) — structured job listings from profesia.sk — Slovakia's largest job board. Get salary, contact info, company data, and more.
 
-**[Profesia Scraper on Apify →](https://apify.com/blackfalcondata/profesia-scraper)**
+**[Profesia.sk Scraper - Slovakia Jobs on Apify →](https://apify.com/blackfalcondata/profesia-scraper)**
 
 ---
 
 ## Key features
+
 
 
 
@@ -19,6 +20,7 @@ Extract structured data from [profesia.sk](https://profesia.sk) — structured j
 ---
 
 ## Use cases
+
 
 
 
@@ -90,6 +92,7 @@ Each listing gets a content hash. On subsequent runs, only new or changed listin
 ---
 
 ## Related products by Black Falcon Data
+
 
 
 
