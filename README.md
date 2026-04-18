@@ -2,11 +2,12 @@
 
 Extract structured data from [profesia.sk](https://profesia.sk) — structured job listings from profesia.sk — Slovakia's largest job board. Get salary, contact info, company data, and more.
 
-**[Profesia.sk Scraper - Slovakia Jobs on Apify →](https://apify.com/blackfalcondata/profesia-scraper)**
+**[Profesia.sk Scraper - Slovakia Jobs on Apify →](https://apify.com/blackfalcondata/profesia-scraper?fpr=1h3gvi)**
 
 ---
 
 ## Key features
+
 
 
 
@@ -17,9 +18,22 @@ Extract structured data from [profesia.sk](https://profesia.sk) — structured j
 
 **Incremental mode** — Only get new or changed listings since your last run. Content hash per listing — no duplicates, no re-processing.
 
+**Change classification** — Track unchanged, expired, cross-run repost detection across runs. Build audit trails of how listings evolve over time.
+
+**Compact output** — Emit core fields only (AI-agent / MCP-friendly). Keeps response size small for LLM workflows.
+
+**Description truncation** — Cap description length per listing to control output size and cost.
+
+**Result cap** — Stop after N listings (up to 5.000). Set to 0 for the full catalog.
+
+**Export anywhere** — Download as JSON, CSV, or Excel. Stream via Apify API, webhooks, or integrations with Make, Zapier, Airbyte, Keboola.
+
+**Structured data** — Every listing returns the same schema with consistent field naming. All fields always present — `null` when unavailable, never omitted.
+
 ---
 
 ## Use cases
+
 
 
 
@@ -29,6 +43,18 @@ Integrate with your ETL pipeline to collect structured listings from profesia.sk
 
 **Market research**
 Monitor listings, track trends, and analyze market dynamics with structured, deduplicated data from profesia.sk.
+
+**Change monitoring**
+Run daily or hourly in incremental mode to capture only new, updated, or expired listings. Perfect for price-tracking, churn analysis, and alerting pipelines.
+
+**Compensation benchmarking**
+Aggregate salary ranges across roles, industries, and locations on profesia.sk to inform pricing decisions, hiring plans, or candidate negotiations.
+
+**Lead generation**
+Extract employer contact details alongside listings to build outreach lists for recruiters, staffing agencies, or B2B sales teams.
+
+**AI / LLM training data**
+Structured JSON per listing is ready for RAG pipelines, embeddings, and agent workflows. Compact mode trims tokens for LLM context windows.
 
 ---
 
@@ -89,6 +115,94 @@ Each listing gets a content hash. On subsequent runs, only new or changed listin
 - <!-- WRITE: limitation 1 -->
 - <!-- WRITE: limitation 2 -->
 
+
+## Output fields
+
+Every listing returns the same 43-field schema. Missing values are `null` — never omitted.
+
+- `jobId`
+- `jobKey`
+- `title`
+- `company`
+- `companyUrl`
+- `companyId`
+- `location`
+- `remoteType`
+- `description`
+- `descriptionHtml`
+- `descriptionLength`
+- `salaryText`
+- `salaryMin`
+- `salaryMax`
+- `salaryCurrency`
+- `salaryType`
+- `salaryGross`
+- `employmentType`
+- `postedDate`
+- `validThrough`
+- `startDate`
+- `education`
+- `benefits`
+- `category`
+- `positions`
+- `contactName`
+- `contactPhone`
+- `contactEmail`
+- `canonicalUrl`
+- `applyUrl`
+- `sourceUrl`
+- `portalUrl`
+- `sourceCountry`
+- `sourceDomain`
+- `searchQuery`
+- `searchUrl`
+- `isSponsored`
+- `scrapedAt`
+- `detailFetched`
+- `contentQuality`
+- `extractedEmails`
+- `companyDescription`
+- `companyEmployeeRange`
+
+
+## Sample output
+
+One object per listing. Here is a real example from a production run:
+
+```json
+{
+  "jobId": "7d4642914a31c15dac5a464b5caab429f7f6420c339963ec5c8bd3010ab1cea5",
+  "jobKey": "5253969",
+  "title": "FrontEnd Developer",
+  "company": "Pro HR",
+  "companyUrl": "https://www.profesia.sk/praca/pro-hr/C56404",
+  "companyId": "56404",
+  "location": "Práca z domu",
+  "remoteType": "onsite",
+  "description": null,
+  "descriptionHtml": null,
+  "descriptionLength": 0,
+  "salaryText": "Od 3 700 EUR/mesiac"
+}
+```
+
+*Truncated — full records contain 43 fields. See Output fields for the complete schema.*
+
+
+**[Try Profesia.sk Scraper - Slovakia Jobs now — $5 free credit, no credit card →](https://apify.com/blackfalcondata/profesia-scraper?fpr=1h3gvi)**
+
+
+## Pricing
+
+Pay only for what you extract. No subscription required — Apify's free $5 credit covers thousands of results.
+
+| Event | Price (USD) |
+| --- | --- |
+| Actor Start | $0.01 |
+| Result | $0.002 |
+
+See the [actor on Apify](https://apify.com/blackfalcondata/profesia-scraper?fpr=1h3gvi) for current pricing.
+
 ---
 
 ## Related products by Black Falcon Data
@@ -96,10 +210,33 @@ Each listing gets a content hash. On subsequent runs, only new or changed listin
 
 
 
-- [StepStone Scraper](https://github.com/BlackFalconData-org/stepstone-scraper) — Job listings from 18 European portals
-- [Indeed Job Scraper](https://github.com/BlackFalconData-org/indeed-job-scraper) — Indeed job listings with salary data
-- [Glassdoor Job Scraper](https://github.com/BlackFalconData-org/glassdoor-job-scraper) — Glassdoor listings with company ratings
 
+- [StepStone Scraper](https://apify.com/blackfalcondata/stepstone-scraper?fpr=1h3gvi) — Job listings from 18 European portals
+- [Indeed Job Scraper](https://apify.com/blackfalcondata/indeed-job-scraper?fpr=1h3gvi) — Indeed job listings with salary data
+- [Glassdoor Job Scraper](https://apify.com/blackfalcondata/glassdoor-job-scraper?fpr=1h3gvi) — Glassdoor listings with company ratings
+- [Arbeitsagentur Scraper](https://apify.com/blackfalcondata/arbeitsagentur-scraper?fpr=1h3gvi) — Germany's official job portal (1M+ listings)
+- [SEEK Scraper](https://apify.com/blackfalcondata/seek-scraper?fpr=1h3gvi) — Australia & NZ's largest job board
+- [Naukri Scraper](https://apify.com/blackfalcondata/naukri-scraper?fpr=1h3gvi) — India's largest job portal
+
+
+## Getting started with Apify
+
+New to Apify? [Create a free account with $5 credit](https://console.apify.com/sign-up?fpr=1h3gvi) — no credit card required.
+
+1. [Sign up free](https://console.apify.com/sign-up?fpr=1h3gvi) — $5 credit included
+2. Open the actor and paste your input
+3. Click Start — results download as JSON, CSV, or Excel
+
+Need more volume? [See pricing](https://apify.com/pricing?fpr=1h3gvi).
+
+---
+
+
+## About Black Falcon Data
+
+Black Falcon Data builds production-grade web scrapers for job boards and marketplace data. Browse our full actor catalog at [www.blackfalcondata.com](https://www.blackfalcondata.com).
+
+---
 ---
 
 *Last updated: 2026 03*
